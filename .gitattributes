@@ -1,0 +1,12 @@
+# Auto detect text files and perform LF normalization
+*                        text=auto
+
+# Vendoring settings for OrchardCore's wwwroot
+**/wwwroot/**/*          linguist-vendored
+
+# Keep LF line endings for web assets to avoid changes under Windows
+**/wwwroot/**/*.js       text eol=lf
+**/wwwroot/**/*.css      text eol=lf
+
+# Force LF for JSON files
+**/*.json                text eol=lf
