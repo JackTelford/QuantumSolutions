@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -18,10 +18,10 @@
 
   <!-- OrchardCore and Other Package References -->
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Logging.NLog" Version="2.0.2" />
-    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="2.0.2" />
-    <PackageReference Include="OrchardCore.Shells.Azure" Version="2.0.2" />
-    <PackageReference Include="TheTheme" Version="2.0.2" />
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="2.1.5" />
+    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="2.1.5" />
+    <PackageReference Include="OrchardCore.Shells.Azure" Version="2.1.5" />
+    <PackageReference Include="TheTheme" Version="2.1.5" />
     <PackageReference Include="Ben.BlockingDetector" Version="0.0.4" />
     <PackageReference Include="CrestApps.Components" Version="1.10.0-preview-0023" />
     <PackageReference Include="CrestApps.Components.Users" Version="1.10.0-preview-0023" />
@@ -30,6 +30,8 @@
     <PackageReference Include="CrestApps.Queues.Core" Version="1.10.0-preview-0023" />
     <PackageReference Include="CrestApps.Support" Version="1.2.2" />
     <PackageReference Include="CrestApps.UniqueTitle" Version="1.10.0-preview-0023" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0-rc.2.24474.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0-rc.2.24473.5" />
   </ItemGroup>
 
   <!-- Commented OrchardCore PackageReferences (uncomment as needed) -->
