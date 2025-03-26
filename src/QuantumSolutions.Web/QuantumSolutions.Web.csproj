@@ -4,6 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <ImplicitUsings>enable</ImplicitUsings>
+    <OrchardCoreVersion>2.1.6</OrchardCoreVersion>
+    <!-- Define the OrchardCore version here -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,10 +20,10 @@
 
   <!-- OrchardCore and Other Package References -->
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Logging.NLog" Version="2.1.5" />
-    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="2.1.5" />
-    <PackageReference Include="OrchardCore.Shells.Azure" Version="2.1.5" />
-    <PackageReference Include="TheTheme" Version="2.1.5" />
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Shells.Azure" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="TheTheme" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="Ben.BlockingDetector" Version="0.0.4" />
     <PackageReference Include="CrestApps.Components" Version="1.10.0-preview-0023" />
     <PackageReference Include="CrestApps.Components.Users" Version="1.10.0-preview-0023" />
