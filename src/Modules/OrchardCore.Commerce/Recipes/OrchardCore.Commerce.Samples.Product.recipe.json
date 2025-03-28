@@ -1,0 +1,494 @@
+{
+  "name": "OrchardCore.Commerce.Samples.Product",
+  "displayName": "Orchard Core Commerce - Samples - Product",
+  "description": "Creates sample Product content items.",
+  "author": "The Orchard Team",
+  "website": "https://orchardproject.net",
+  "version": "2.0",
+  "issetuprecipe": false,
+  "categories": [ "commerce" ],
+  "tags": [ "product", "sample" ],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "ProductList",
+          "DisplayName": "Product List",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Listable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ProductList",
+              "Name": "ProductList",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "ProductListPart",
+              "Name": "ProductListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                },
+                "AutoroutePartSettings": {
+                  "ShowHomepageOption": true
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": []
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "mainproductlist00000000000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "ProductList",
+          "DisplayText": "My Shop",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2023-09-15T17:10:18.3635912Z",
+          "PublishedUtc": "2023-09-15T17:10:18.3683599Z",
+          "CreatedUtc": "2023-09-15T16:48:55.6626545Z",
+          "Owner": null,
+          "Author": "admin",
+          "ProductList": {},
+          "ProductListPart": {},
+          "AutoroutePart": {
+            "Path": "my-shop",
+            "SetHomepage": true,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TitlePart": {
+            "Title": "My Shop"
+          }
+        },
+        {
+          "ContentItemId": "testpricevariantproduct000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "PriceVariantsProduct",
+          "DisplayText": "Test Price Variant Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2022-08-10T20:27:55.221899Z",
+          "PublishedUtc": "2022-08-10T20:27:55.2244171Z",
+          "CreatedUtc": "2022-08-10T20:27:55.221899Z",
+          "Owner": null,
+          "Author": "admin",
+          "PriceVariantsProduct": {
+            "Size": {}
+          },
+          "TitlePart": {
+            "Title": "Test Price Variant Product"
+          },
+          "PriceVariantsPart": {
+            "Variants": {
+              "Small": {
+                "value": 10.0,
+                "currency": "USD"
+              },
+              "Medium": {
+                "value": 20.0,
+                "currency": "USD"
+              },
+              "Large": {
+                "value": 30.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "InventoryPart": {
+            "Inventory": {
+              "TESTPRODUCTVARIANT-SMALL": 5,
+              "TESTPRODUCTVARIANT-MEDIUM": 10,
+              "TESTPRODUCTVARIANT-LARGE": 15
+            },
+            "InventoryKeys": [
+              "TESTPRODUCTVARIANT-SMALL",
+              "TESTPRODUCTVARIANT-MEDIUM",
+              "TESTPRODUCTVARIANT-LARGE"
+            ],
+            "AllowsBackOrder": {
+              "Value": true
+            },
+            "IgnoreInventory": {
+              "Value": false
+            },
+            "MaximumOrderQuantity": {
+              "Value": 2.0
+            },
+            "MinimumOrderQuantity": {
+              "Value": 1.0
+            },
+            "OutOfStockMessage": {
+              "Html": "A professional out of stock message."
+            },
+            "ProductSku": "TESTPRODUCTVARIANT"
+          },
+          "ProductPart": {
+            "Sku": "TESTPRODUCTVARIANT",
+            "ProductImage": {
+              "Paths": [
+                "ProductImages/sample-product-image.png"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "ContentItemId": "testproduct000",
+          "ContentItemVersionId": "testproducttestversion0000",
+          "ContentType": "Product",
+          "DisplayText": "Test Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2022-08-10T19:34:57.2678948Z",
+          "PublishedUtc": "2022-08-10T19:34:57.2716912Z",
+          "CreatedUtc": "2022-08-10T19:34:57.2678948Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Test Product"
+          },
+          "AutoroutePart": {
+            "Path": "testproduct",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "HtmlBodyPart": {
+            "Html": ""
+          },
+          "ProductPart": {
+            "Sku": "TESTPRODUCT",
+            "ProductImage": {
+              "Paths": [
+                "ProductImages/sample-product-image.png"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "PricePart": {
+            "PriceField": {
+              "Amount": {
+                "value": 5.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "InventoryPart": {
+            "Inventory": {
+              "TESTPRODUCT": 5
+            },
+            "InventoryKeys": [
+              "TESTPRODUCT"
+            ],
+            "AllowsBackOrder": {
+              "Value": true
+            },
+            "IgnoreInventory": {
+              "Value": false
+            },
+            "MaximumOrderQuantity": {
+              "Value": 2.0
+            },
+            "MinimumOrderQuantity": {
+              "Value": 1.0
+            },
+            "OutOfStockMessage": {
+              "Html": "A professional out of stock message."
+            },
+            "ProductSku": "TESTPRODUCT"
+          },
+          "Product": {}
+        },
+        {
+          "ContentItemId": "testfreeproduct000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Product",
+          "DisplayText": "Test Free Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2022-08-10T19:34:57.2678948Z",
+          "PublishedUtc": "2022-08-10T19:34:57.2716912Z",
+          "CreatedUtc": "2022-08-10T19:34:57.2678948Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Test Free Product"
+          },
+          "AutoroutePart": {
+            "Path": "testfreeproduct",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "HtmlBodyPart": {
+            "Html": ""
+          },
+          "ProductPart": {
+            "Sku": "TESTFREEPRODUCT",
+            "ProductImage": {
+              "Paths": [
+                "ProductImages/sample-product-image.png"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "PricePart": {
+            "PriceField": {
+              "Amount": {
+                "value": 0.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "InventoryPart": {
+            "Inventory": {
+              "TESTFREEPRODUCT": 5
+            },
+            "InventoryKeys": [
+              "TESTFREEPRODUCT"
+            ],
+            "AllowsBackOrder": {
+              "Value": true
+            },
+            "IgnoreInventory": {
+              "Value": false
+            },
+            "MaximumOrderQuantity": {
+              "Value": 2.0
+            },
+            "MinimumOrderQuantity": {
+              "Value": 1.0
+            },
+            "OutOfStockMessage": {
+              "Html": "A professional out of stock message."
+            },
+            "ProductSku": "TESTFREEPRODUCT"
+          },
+          "Product": {}
+        },
+        {
+          "ContentItemId": "testdiscountedproduct000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Product",
+          "DisplayText": "Test Discounted Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2022-08-10T19:34:57.2678948Z",
+          "PublishedUtc": "2022-08-10T19:34:57.2716912Z",
+          "CreatedUtc": "2022-08-10T19:34:57.2678948Z",
+          "Owner": null,
+          "Author": "admin",
+          "TitlePart": {
+            "Title": "Test Discounted Product"
+          },
+          "AutoroutePart": {
+            "Path": "testdiscountedproduct",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "HtmlBodyPart": {
+            "Html": ""
+          },
+          "ProductPart": {
+            "Sku": "TESTDISCOUNTEDPRODUCT",
+            "ProductImage": {
+              "Paths": [
+                "ProductImages/sample-product-image.png"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            }
+          },
+          "PricePart": {
+            "PriceField": {
+              "Amount": {
+                "value": 5.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "InventoryPart": {
+            "Inventory": {
+              "TESTDISCOUNTEDPRODUCT": 5
+            },
+            "InventoryKeys": [
+              "TESTDISCOUNTEDPRODUCT"
+            ],
+            "AllowsBackOrder": {
+              "Value": true
+            },
+            "IgnoreInventory": {
+              "Value": false
+            },
+            "MaximumOrderQuantity": {
+              "Value": 2.0
+            },
+            "MinimumOrderQuantity": {
+              "Value": 1.0
+            },
+            "OutOfStockMessage": {
+              "Html": "A professional out of stock message."
+            },
+            "ProductSku": "TESTDISCOUNTEDPRODUCT"
+          },
+          "DiscountPart": {
+            "DiscountPercentage": {
+              "Value": null
+            },
+            "DiscountAmount": {
+              "Amount": {
+                "value": 2.0,
+                "currency": "USD"
+              }
+            },
+            "BeginningUtc": {
+              "Value": null
+            },
+            "ExpirationUtc": {
+              "Value": null
+            },
+            "MaximumProducts": {
+              "Value": null
+            },
+            "MinimumProducts": {
+              "Value": null
+            }
+          },
+          "Product": {}
+        },
+        {
+          "ContentItemId": "testproductlocalized000000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "LocalizedProduct",
+          "DisplayText": "Test Localized Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2023-08-05T09:21:26.7987524Z",
+          "PublishedUtc": "2023-08-05T09:21:41.1554167Z",
+          "CreatedUtc": "2023-08-05T09:21:05.6074294Z",
+          "Owner": null,
+          "Author": "admin",
+          "LocalizedProduct": {},
+          "TitlePart": {
+            "Title": "Test Localized Product"
+          },
+          "ProductPart": {
+            "Sku": "LOCALIZED",
+            "ProductImage": {
+              "Paths": [
+                "ProductImages/sample-product-image.png"
+              ],
+              "MediaTexts": [
+                ""
+              ]
+            },
+            "CanBeBought": {}
+          },
+          "PricePart": {
+            "PriceField": {
+              "Amount": {
+                "value": 10.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "LocalizationPart": {
+            "LocalizationSet": "testproductlocalizationset",
+            "Culture": "en-US"
+          }
+        },
+        {
+          "ContentItemId": "testtieredpriceproduct0000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "TieredPriceProduct",
+          "DisplayText": "Test Tiered Price Product",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2023-09-22T09:12:34.6566162Z",
+          "PublishedUtc": "2023-09-22T09:12:34.6874141Z",
+          "CreatedUtc": "2023-09-22T09:09:54.1908827Z",
+          "Owner": null,
+          "Author": "admin",
+          "TieredPriceProduct": {},
+          "TieredPricePart": {
+            "DefaultPrice": {
+              "value": 90.0,
+              "currency": "USD"
+            },
+            "PriceTiers": [
+              {
+                "Quantity": 3,
+                "UnitPrice": 80.0
+              },
+              {
+                "Quantity": 5,
+                "UnitPrice": 70.0
+              }
+            ]
+          },
+          "TitlePart": {
+            "Title": "Test Tiered Price Product"
+          },
+          "ProductPart": {
+            "Sku": "TESTTIEREDPRICE",
+            "CanBeBought": {}
+          }
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "SourcePath": "Media/ProductImages/sample-product-image.png",
+          "TargetPath": "ProductImages/sample-product-image.png"
+        }
+      ]
+    }
+  ]
+}

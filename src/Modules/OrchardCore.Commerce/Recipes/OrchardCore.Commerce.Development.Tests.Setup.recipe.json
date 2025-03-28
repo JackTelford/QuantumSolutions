@@ -1,0 +1,59 @@
+{
+  "name": "OrchardCore.Commerce.Development.Tests.Setup",
+  "displayName": "TEST: Orchard Core Commerce",
+  "description": "OrchardCore Commerce setup recipe for automated UI test execution.",
+  "author": "OrchardCoreCommerce",
+  "website": "https://commerce.orchardcore.net",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [
+    "test"
+  ],
+  "tags": [
+    "test"
+  ],
+  "steps": [
+    {
+      "name": "settings",
+      "UseCdn": false,
+      "PageSize": 5,
+      // To make sure that e.g. numbers and dates are formatted the same way on all machines we have to specify the
+      // culture too.
+      "LocalizationSettings": {
+        "DefaultCulture": "en-US",
+        "SupportedCultures": [
+          "en-US",
+          "hu-HU"
+        ]
+      }
+    },
+    {
+      "name": "feature",
+      "enable": [
+        // Needed for consistent, machine-independent locale setting.
+        "OrchardCore.Localization"
+      ],
+      "disable": [
+        "OrchardCore.Commerce.Payment.Exactly",
+        "OrchardCore.Commerce.Payment.Stripe"
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Development.Setup"
+        },
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Content.TestPriceVariantsProduct"
+        },
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Content.TestTieredPriceProduct"
+        }
+      ]
+    }
+  ]
+}

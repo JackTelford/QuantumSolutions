@@ -1,0 +1,28 @@
+@using Lombiq.HelpfulLibraries.OrchardCore.TagHelpers
+@using Microsoft.AspNetCore.Html
+@using Microsoft.AspNetCore.Mvc.Localization
+@model OrchardCore.Commerce.Payment.Stripe.ViewModels.StripeApiSettingsViewModel
+
+@{
+    var emptyAfterSaving = T["The field will be empty after saving it, for security reasons."];
+}
+
+<fieldset asp-for="PublishableKey"
+          label="@T["Publishable Key"]"
+          hint="@T["Your Stripe's Publishable API key."]"></fieldset>
+
+<fieldset asp-for="SecretKey"
+          label="@T["Secret Key"]"
+          hint="@(new HtmlString(" ").Join(T["Your Stripe Secret API key."], emptyAfterSaving))"
+          type="password"></fieldset>
+
+<fieldset asp-for="WebhookSigningSecret"
+          label="@T["Webhook Signing Secret"]"
+          hint="@(new HtmlString(" ").Join(T["Your Webhook Signing Secret key."], emptyAfterSaving))"
+          type="password"></fieldset>
+
+<div class="mb-3">
+    <span class="hint">
+        @T["Get your Stripe API keys at <a href=\"https://stripe.com/docs/keys\" target=\"_blank\">https://stripe.com/docs/keys</a>. And your Webhook key at <a href=\"https://dashboard.stripe.com/webhooks\" target=\"_blank\">https://dashboard.stripe.com/webhooks</a>"]
+    </span>
+</div>

@@ -1,0 +1,93 @@
+@using OrchardCore.Commerce.Abstractions.ViewModels
+@using OrchardCore.Commerce.Models
+@using OrchardCore.Commerce.MoneyDataType
+@using OrchardCore.Commerce.Tax.Extensions
+@using OrchardCore.Settings
+@inject ISiteService SiteService
+
+@{
+    var viewModel = (ShoppingCartViewModel)Model.ShoppingCartViewModel;
+    var lines = viewModel.Lines;
+    var priceDisplaySettings = await SiteService.GetSettingsAsync<PriceDisplaySettings>();
+
+    var currency = viewModel.Totals.Any() ? viewModel.Totals.First().Currency : lines.FirstOrDefault()?.LinePrice.Currency;
+    var netTotal = new Amount(0, currency);
+    var grossTotal = new Amount(0, currency);
+
+    foreach (var line in lines)
+    {
+        var additionalData = line.AdditionalData;
+        var grossAmount = additionalData.GetGrossPrice();
+        if (grossAmount.Value > 0)
+        {
+            grossTotal += grossAmount * line.Quantity;
+        }
+
+        var netAmount = additionalData.GetNetPrice();
+        var netPrice = netAmount.Value > 0 ? netAmount : line.UnitPrice;
+        netTotal += netPrice * line.Quantity;
+    }
+}
+
+<table class="table shopping-cart-table">
+    <thead>
+    <tr>
+        @foreach (var header in viewModel.Headers)
+        {
+            <th scope="col">@header</th>
+        }
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var line in viewModel.TableShapes)
+    {
+        <tr>
+            @foreach (var cell in line)
+            {
+                <td>
+                    @await DisplayAsync(cell)
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+
+    <tfoot>
+    <tr>
+        <td class="font-weight-bold">@T["Total"]</td>
+        <td colspan="@(viewModel.Headers.Count - 2)" class="shopping-cart-table-totals">
+            @* If there's no Gross Price, display original totals. *@
+            @if (grossTotal.Value == 0)
+            {
+                @foreach (var total in viewModel.Totals)
+                {
+                    <div>@total</div>
+                }
+            }
+            else
+            {
+                <p>
+                    @if (priceDisplaySettings.UseNetPriceDisplay)
+                    {
+                        @T["Net Price: {0}", netTotal]
+                    }
+                    @if (priceDisplaySettings.UseNetPriceDisplay && priceDisplaySettings.UseGrossPriceDisplay)
+                    {
+                        <text>｜</text>
+                    }
+                    @if (priceDisplaySettings.UseGrossPriceDisplay)
+                    {
+                        @T["Gross Price: {0}", grossTotal]
+                    }
+                </p>
+            }
+        </td>
+        <td>
+            <form asp-action="Update" asp-controller="ShoppingCart" asp-area="OrchardCore.Commerce" id="shopping-cart-update">
+                <button type="submit" class="btn btn-primary">@T["Update"]</button>
+            </form>
+        </td>
+    </tr>
+    </tfoot>
+</table>

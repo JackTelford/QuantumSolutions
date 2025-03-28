@@ -1,0 +1,342 @@
+{
+  "name": "OrchardCore.Commerce.Development.Setup",
+  "displayName": "Orchard Core Commerce - Development",
+  "description": "Settings and contents required only for development environment.",
+  "author": "OrchardCoreCommerce",
+  "website": "https://commerce.orchardcore.net",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [ "orchardcorecommerce" ],
+  "tags": [ "HideFromSetupScreen" ],
+
+  "steps": [
+    {
+      "name": "feature",
+      "enable": [
+        // SaaS
+        "OrchardCore.Admin",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Features",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Navigation",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Security",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Users",
+
+        // Content Management
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Alias",
+        "OrchardCore.Autoroute",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Contents",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment",
+        "OrchardCore.Deployment.Remote",
+        "OrchardCore.Feeds",
+        "OrchardCore.Flows",
+        "OrchardCore.Html",
+        "OrchardCore.Indexing",
+        "OrchardCore.Layers",
+        "OrchardCore.Lists",
+        "OrchardCore.Localization",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Placements",
+        "OrchardCore.Queries",
+        "OrchardCore.Queries.Sql",
+        "OrchardCore.Rules",
+        "OrchardCore.Shortcodes.Templates",
+        "OrchardCore.Taxonomies",
+        "OrchardCore.Templates",
+        "OrchardCore.Title",
+        "OrchardCore.Users.CustomUserSettings",
+        "OrchardCore.Widgets",
+
+        "OrchardCore.Commerce",
+        "OrchardCore.Commerce.CurrencySettingsSelector",
+        "OrchardCore.Commerce.SessionCartStorage",
+
+        "OrchardCore.Commerce.Payment.DummyProvider",
+        "OrchardCore.Commerce.Payment.Exactly",
+        "OrchardCore.Commerce.Promotion",
+        "OrchardCore.Commerce.Inventory",
+
+        // Themes
+        "TheBlogTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "TheBlogTheme"
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Moderator",
+          "Description": "Moderator role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ViewContent",
+            "Preview_GlobalDiscount"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Author",
+          "Description": "Author role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishOwnContent",
+            "EditOwnContent",
+            "DeleteOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "EditOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "ListContent",
+            "ManageMediaContent",
+            "ManageWorkflows",
+            "ExecuteWorkflows"
+          ]
+        },
+        {
+          "Name": "Administrator",
+          "Description": "Administrator role",
+          "Permissions": [
+            "ManageSettings",
+            "AccessAdminPanel",
+            "ManageAdminSettings",
+            "ManageUsers",
+            "ManageRoles",
+            "SiteOwner",
+            "ManageTenants",
+            "ApplyTheme",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "AccessContentApi",
+            "ListContent",
+            "ViewContentTypes",
+            "EditContentTypes",
+            "ManageMediaContent",
+            "ManageAttachedMediaFieldsFolder",
+            "ManageMediaProfiles",
+            "ViewMediaOptions",
+            "ManageAssetCache",
+            "ViewAzureMediaOptions",
+            "ManageBackgroundTasks",
+            "ManageEmailSettings",
+            "ManageWorkflows",
+            "ExecuteWorkflows",
+            "SetHomepage",
+            "Import",
+            "Export",
+            "ViewAuditTrail",
+            "ManageAuditTrailSettings"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Content.Product"
+        },
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Samples.Product"
+        },
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Samples.Order"
+        },
+        {
+          "executionid": "OrchardCore.Commerce",
+          "name": "OrchardCore.Commerce.Content.MultiCurrencyProduct"
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "UserSettingsWidget",
+          "DisplayName": "User Settings Widget",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "UserSettingsWidget",
+              "Name": "UserSettingsWidget",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": []
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "Widget__UserSettingsWidget": {
+          "Content": "<div style=\"position: absolute; right: 8rem; top: .625rem; z-index: 9999; display: flex;\">\r\n    <a class=\"nav-link user-addresses-widget\" href=\"{{ '~/user/addresses' | href }}\" title=\"{{ 'User Addresses' | t }}\">\r\n        <i class=\"fa-2x fas fa-address-card text-white\"></i>\r\n    </a>\r\n    <a class=\"nav-link user-details-widget\" href=\"{{ '~/user/details' | href }}\" title=\"{{ 'User Details' | t }}\">\r\n        <i class=\"fa-2x fa-solid fa-user text-white\"></i>\r\n    </a>\r\n</div>",
+          "Description": null
+        }
+      }
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Always",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "[js:uuid()]"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "[js:uuid()]"
+          }
+        },
+        {
+          "Name": "Authenticated",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.IsAuthenticatedCondition, OrchardCore.Rules",
+                "Name": "IsAuthenticatedCondition",
+                "ConditionId": "4dtw6vt2ay40qz1rs90zcy1hnh"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "47yv5v2e0t2hq1jm52hp6xxj4v"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "LayerSettings": {
+        "Zones": [
+          "Header",
+          "Content",
+          "Footer"
+        ]
+      }
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "ShoppingCartWidget",
+          "DisplayText": "Shopping Cart Widget",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2022-09-03T15:34:06.3853461Z",
+          "PublishedUtc": "2022-09-03T15:34:06.3874627Z",
+          "CreatedUtc": "2022-09-03T15:34:06.3853461Z",
+          "Owner": "4wwrveewhrxs42xhqgxe4t2vmv",
+          "Author": "admin",
+          "ShoppingCartWidgetPart": {},
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "Always"
+          }
+        },
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "UserSettingsWidget",
+          "DisplayText": "User Settings Widget",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2023-09-28T13:38:58.1060057Z",
+          "PublishedUtc": "2023-09-28T13:38:58.1092478Z",
+          "CreatedUtc": "2023-09-28T13:37:54.2665808Z",
+          "Owner": null,
+          "Author": "admin",
+          "UserSettingsWidget": {},
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 2.0,
+            "Zone": "Header",
+            "Layer": "Authenticated"
+          }
+        }
+      ]
+    }
+  ]
+}
