@@ -1,0 +1,72 @@
+{
+  "PricePart": [
+    {
+      "place": "Content:1"
+    },
+    {
+      "displayType": "SummaryAdmin",
+      "place": "-"
+    }
+  ],
+  "ProductPart": [
+    {
+      "place": "Content:last"
+    },
+    {
+      "displayType": "SummaryAdmin",
+      "place": "-"
+    }
+  ],
+  "BooleanField": [
+    {
+      "contentType": [ "Order" ],
+      "path": [ "~/success*" ],
+      "place": "-"
+    },
+    {
+      "differentiator": "OrderPart-BillingAndShippingAddressesMatch",
+      "place": "-"
+    }
+  ],
+  "DateTimeField": [
+    {
+      "contentType": [ "Product" ]
+    },
+    {
+      "differentiator": "DiscountPart-BeginningUtc",
+      "place": "-"
+    },
+    {
+      "differentiator": "DiscountPart-ExpirationUtc",
+      "place": "-"
+    }
+  ],
+  "NumericField": [
+    {
+      "contentType": [ "Product" ]
+    },
+    {
+      "differentiator": "DiscountPart-MaximumProducts",
+      "place": "-"
+    },
+    {
+      "differentiator": "DiscountPart-MinimumProducts",
+      "place": "-"
+    },
+    {
+      "differentiator": "DiscountPart-DiscountPercentage",
+      "place": "-"
+    }
+  ],
+  "TextField": [
+    {
+      "contentType": [ "Order" ],
+      "path": [ "~/success*" ],
+      "place": "-"
+    },
+    {
+      "differentiator": "OrderPart-OrderId",
+      "place": "-"
+    }
+  ]
+}

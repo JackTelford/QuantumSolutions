@@ -32,8 +32,8 @@
     <PackageReference Include="CrestApps.Queues.Core" Version="1.10.0-preview-0023" />
     <PackageReference Include="CrestApps.Support" Version="1.2.2" />
     <PackageReference Include="CrestApps.UniqueTitle" Version="1.10.0-preview-0023" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0-rc.2.24474.3" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0-rc.2.24473.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.3" />
   </ItemGroup>
 
   <!-- Commented OrchardCore PackageReferences (uncomment as needed) -->

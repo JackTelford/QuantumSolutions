@@ -1,0 +1,145 @@
+@using OrchardCore.Commerce.Models
+@using OrchardCore.Commerce.Settings
+@{
+    int index = Model.Index;
+    var attr = Model.AttributeDescription as ProductAttributeDescription;
+    var settings = attr?.Settings as TextProductAttributeFieldSettings;
+    var id = $"{Model.IdPrefix}-attribute-{index}";
+    var optionIndex = 0;
+
+    if (Model.Sku is not string sku)
+    {
+        throw new KeyNotFoundException("Model SKU is not set for text field.");
+    }
+
+    var canBeBoughtDictionary = Model.CanBeBought as Dictionary<string, bool> ?? new Dictionary<string, bool>();
+    var availableVariants = canBeBoughtDictionary.Where(keyValuePair => keyValuePair.Value).ToList();
+
+    bool CanBeBought(string predefinedValue)
+    {
+        var fullSku = sku + "-" + predefinedValue.ToUpperInvariant();
+        return canBeBoughtDictionary.TryGetValue(fullSku, out var fullSkuCanBeBought) && fullSkuCanBeBought ||
+               canBeBoughtDictionary.TryGetValue(sku, out var rootSkuCanBeBought) && rootSkuCanBeBought;
+    }
+
+    var defaultValueUpper = settings?.DefaultValue?.ToUpperInvariant();
+    var defaultValueIsAvailable =
+        !string.IsNullOrEmpty(defaultValueUpper) &&
+        availableVariants.Any(keyValuePair => keyValuePair.Key == sku + "-" + defaultValueUpper);
+}
+
+<label for="@id">@attr?.Name</label>
+<input type="hidden" name="line.Attributes[@index].Key" value="@attr?.PartName.@attr?.Name" />
+@if (settings?.PredefinedValues is null || !settings.PredefinedValues.Any())
+{
+    <input id="@id"
+           type="text"
+           name="line.Attributes[@index].Value"
+           value="@settings?.DefaultValue"
+           placeholder="@settings?.Placeholder"
+           class="form-control" />
+}
+else if (settings.MultipleValues)
+{
+    <ul>
+        @foreach (string predefinedValue in settings.PredefinedValues)
+        {
+            var optionId = $"{id}-{optionIndex}";
+            optionIndex++;
+
+            if (CanBeBought(predefinedValue))
+            {
+                // If the default value is not available, set the first available option as checked.
+                var isChecked = defaultValueIsAvailable
+                    ? predefinedValue == settings.DefaultValue
+                    : sku + "-" + predefinedValue.ToUpperInvariant() == availableVariants.FirstOrDefault().Key;
+
+                <li>
+                    <input id="optionId"
+                           type="checkbox"
+                           name="line.Attributes[@index].Value"
+                           checked="@isChecked"
+                           class="form-check-input" />
+                    <label for="@optionId" class="form-check-label">@predefinedValue</label>
+                </li>
+            }
+        }
+    </ul>
+}
+else if (settings.RestrictToPredefinedValues)
+{
+    if (settings.PredefinedValues.Count() > 5) // Doing radio buttons for less than 5 options
+    {
+        <select id="@id" name="line.Attributes[@index].Value" class="form-control">
+            @foreach (string predefinedValue in settings.PredefinedValues.Cast<string>().Where(CanBeBought))
+            {
+                // If the default value is not available, set the first available option as selected.
+                var isSelected = defaultValueIsAvailable
+                    ? predefinedValue == settings.DefaultValue
+                : sku + "-" + predefinedValue.ToUpperInvariant() == availableVariants.FirstOrDefault().Key;
+
+                <option selected="@isSelected">@predefinedValue</option>
+            }
+        </select>
+    }
+    else
+    {
+        <ul>
+            @foreach (string predefinedValue in settings.PredefinedValues)
+            {
+                var optionId = $"{id}-{optionIndex}";
+                optionIndex++;
+
+                if (CanBeBought(predefinedValue))
+                {
+                    // If the default value is not available, set the first available option as checked.
+                    var isChecked = defaultValueIsAvailable
+                        ? predefinedValue == settings.DefaultValue
+                    : sku + "-" + predefinedValue.ToUpperInvariant() == availableVariants.FirstOrDefault().Key;
+
+                    <li>
+                        <input id="@optionId"
+                               type="radio"
+                               name="line.Attributes[@index].Value"
+                               value="@predefinedValue"
+                               checked="@isChecked"
+                               class="form-check-input" />
+                        <label for="@optionId" class="form-check-label">@predefinedValue</label>
+                    </li>
+                }
+            }
+        </ul>
+    }
+}
+else
+{
+    <input id="@id"
+           type="text"
+           name="line.Attributes[@index].Value"
+           value="@settings.DefaultValue"
+           placeholder="@settings.Placeholder"
+           class="form-control" />
+    <select data-related="line.Attributes[@index].Value" class="product-attribute-combo-select form-control">
+        @foreach (string predefinedValue in settings.PredefinedValues)
+        {
+            <option selected="@(predefinedValue == settings.DefaultValue)">@predefinedValue</option>
+        }
+    </select>
+    <script at="Foot" depends-on="jQuery">
+        jQuery(function ($) {
+            $(".product-attribute-combo-select").change(function (event) {
+                const $select = $(event.target);
+
+                $select
+                    .closest('form')
+                    .find(`input[name="${$select.data('related')}"]`)
+                    .val($select.val());
+            });
+        });
+    </script>
+}
+
+@if (settings?.Hint != null)
+{
+    <div class="hint form-text text-muted">@settings.Hint</div>
+}

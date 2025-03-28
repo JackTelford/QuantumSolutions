@@ -1,0 +1,24 @@
+@using OrchardCore
+@using OrchardCore.Commerce.Abstractions.Abstractions
+@using OrchardCore.Commerce.Abstractions.ViewModels
+@{
+    var line = (ShoppingCartLineViewModel)Model.Line;
+    var attributes = (IList<(IProductAttributeValue Value, string Type, int Index)>)Model.ProductAttributes;
+}
+
+<div class="cart-product-name">
+    <a href="@Orchard.GetItemDisplayUrl(line.Product.ContentItem.ContentItemId)" class="link-primary">@line.ProductName</a>
+</div>
+
+@if (line.Attributes?.Any() == true)
+{
+    <ul class="cart-product-attributes list-inline">
+        @foreach (var (attribute, type, _) in attributes)
+        {
+            <shape tag="li"
+                   Type="@type"
+                   prop-product="@line.Product.ContentItem"
+                   prop-attribute="@(attribute)" />
+        }
+    </ul>
+}

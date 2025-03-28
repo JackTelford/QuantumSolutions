@@ -1,0 +1,18 @@
+﻿<div class="row pt-md-5">
+    <div class="col-6 mx-auto">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="text-success text-center">@T["Confirming payment. Reloading in 2 seconds..."]</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    @* 
+        This must be window.location = window.location otherwise it might be detected as a cross-origin redirect by the 
+        browser which leads to cookies not loading. See https://bugzilla.mozilla.org/show_bug.cgi?id=1459321 for more 
+        info.
+    *@
+    setTimeout(() => window.location = window.location, 2000);
+</script>

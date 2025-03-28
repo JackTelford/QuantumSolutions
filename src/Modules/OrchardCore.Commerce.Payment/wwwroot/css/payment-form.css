@@ -1,0 +1,15 @@
+.row.payment-intent > * {
+  margin: 2rem 0;
+}
+
+.pay-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-button {
+  width: 50%;
+}
+
+/*# sourceMappingURL=payment-form.css.map */

@@ -1,0 +1,17 @@
+@{
+    if (Model.Part.Inventory is not IDictionary<string, int> inventory) { return; }
+
+    // If any inventories contain items or back ordering is allowed, the product is not out of stock.
+    foreach (var inventoryEntry in inventory)
+    {
+        if (inventoryEntry.Value > 0 || Model.Part.AllowsBackOrder.Value) { return; }
+    }
+
+    var html = Model.Part.OutOfStockMessage.Html is string htmlString && !string.IsNullOrWhiteSpace(htmlString)
+        ? htmlString
+        : T["Out of Stock"].Value;
+}
+
+<div class="pb-3 field field-type-htmlfield field-name-inventory-part-out-of-stock-message">
+    <strong class="field-name-inventory-part-out-of-stock-message-title">@Html.Raw(html)</strong>
+</div>

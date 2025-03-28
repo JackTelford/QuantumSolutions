@@ -1,0 +1,23 @@
+@import "general/error";
+
+.shopping-cart-table {
+    th {
+        text-align: center;
+    }
+
+    tbody,
+    tfoot {
+        & tr > *:last-child {
+            text-align: right;
+        }
+    }
+
+    &-totals,
+    &-unit-price {
+        text-align: right;
+    }
+
+    &-quantity {
+        max-width: 5em;
+    }
+}
