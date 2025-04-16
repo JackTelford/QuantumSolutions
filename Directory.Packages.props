@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  Directory.Packages.props centralizes all the package versions.
+  This file is automatically picked up by the SDK and supplies versions to all projects.
+  
+  Here we define version properties like AspNetCorePackagesVersion, CrestAppsVersion, and OrchardCoreVersion,
+  which can then be referenced below to set package versions.
+-->
+<Project>
+  <!-- Define version properties first -->
+  <PropertyGroup>
+    <AspNetCorePackagesVersion>9.0.4</AspNetCorePackagesVersion>
+    <CrestAppsVersion>1.2.0-preview-275</CrestAppsVersion>
+    <OrchardCoreVersion>3.0.0-preview-18578</OrchardCoreVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Microsoft Packages -->
+    <PackageVersion Include="Azure.AI.FormRecognizer" Version="4.1.0" />
+    <PackageVersion Include="Azure.ResourceManager.CognitiveServices" Version="1.4.0" />
+    <PackageVersion Include="Microsoft.CognitiveServices.Speech" Version="1.42.0" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.3.0" />
+    <!-- Using the AspNetCorePackagesVersion property -->
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="System.IO.Packaging" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="System.Formats.Asn1" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="System.DirectoryServices" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="System.DirectoryServices.Protocols" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="$(AspNetCorePackagesVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="$(AspNetCorePackagesVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- CrestApps New Packages -->
+    <PackageVersion Include="CrestApps.OrchardCore.AI.Abstractions" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.AI" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.AI.Chat" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.AI.Core" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.OpenAI.Core" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.OpenAI.Azure" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.OpenAI.Azure.Core" Version="$(CrestAppsVersion)" />
+    <PackageVersion Include="CrestApps.OrchardCore.SignalR" Version="$(CrestAppsVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- CrestApps Old Packages -->
+    <PackageVersion Include="CrestApps.Foundation" Version="1.0.0" />
+    <PackageVersion Include="CrestApps.Support" Version="1.2.2" />
+    <PackageVersion Include="CrestApps.Components" Version="1.10.0-preview-0023" />
+    <PackageVersion Include="CrestApps.Components.Abstractions" Version="1.10.0-preview-0023" />
+    <PackageVersion Include="CrestApps.Components.Core" Version="1.10.0-preview-0023" />
+    <PackageVersion Include="CrestApps.Components.Users" Version="1.10.0-preview-0024" />
+    <PackageVersion Include="CrestApps.Queues" Version="1.10.0-preview-0027" />
+    <PackageVersion Include="CrestApps.Queues.Abstractions" Version="1.10.0-preview-0023" />
+    <PackageVersion Include="CrestApps.Queues.Core" Version="1.10.0-preview-0024" />
+    <PackageVersion Include="CrestApps.UniqueTitle" Version="1.10.0-preview-0023" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- OrchardCore Packages (Pre-release) -->
+    <!-- All OrchardCore packages use the same OrchardCoreVersion property -->
+    <PackageVersion Include="OrchardCore" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Admin.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.AdminDashboard" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Alias" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Application.Cms.Core.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Autoroute" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentFields" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentManagement.Display" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Contents" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Contents.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Contents.TagHelpers" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentTypes" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.CustomSettings" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Data.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Data.YesSql" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Data.YesSql.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.DataProtection.Azure" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Deployment.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Deployment.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Email" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Email.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Email.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Email.Smtp" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.FileStorage.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.FileStorage.FileSystem" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.FileStorage.AzureBlob" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Forms" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Html" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Infrastructure" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Infrastructure.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Layers" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Liquid" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Lists" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Markdown" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Markdown.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Media.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Media.Azure" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Media.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Menu" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Mvc.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Navigation" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Navigation.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Notifications" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Notifications.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Notifications.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.OpenId" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Recipes" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Recipes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Recipes.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ResourceManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ReverseProxy" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Rules" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Rules.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Rules.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Search" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Search.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Search.AzureAI.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Search.Elasticsearch" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Security" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Settings.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Setup.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Setup.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Shells.Azure" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Shortcodes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Taxonomies" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Themes" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Title" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Users.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Users.Core" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Workflows.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.BackgroundTasks" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="TheAdmin" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="TheTheme" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="TheBlogTheme" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="TheAgencyTheme" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="SafeMode" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="TheComingSoonTheme" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Miscellaneous Packages -->
+    <PackageVersion Include="Ben.BlockingDetector" Version="0.0.4" />
+    <PackageVersion Include="Concentus.Oggfile" Version="1.0.6" />
+    <PackageVersion Include="EPPlus" Version="7.5.3" />
+    <PackageVersion Include="FreeSpire.Doc" Version="12.2.0" />
+    <PackageVersion Include="HtmlSanitizer" Version="9.1.878-beta" />
+    <PackageVersion Include="IPAddressRange" Version="6.1.0" />
+    <PackageVersion Include="ncrontab" Version="3.3.3" />
+    <PackageVersion Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageVersion Include="ReverseMarkdown" Version="4.6.0" />
+    <PackageVersion Include="Shortcodes" Version="1.3.5" />
+    <PackageVersion Include="Wangkanai.Detection" Version="8.14.0" />
+    <!-- Updated YesSql packages -->
+    <PackageVersion Include="YesSql" Version="5.3.0" />
+    <PackageVersion Include="YesSql.Abstractions" Version="5.3.0" />
+    <PackageVersion Include="YesSql.Core" Version="5.3.0" />
+    <PackageVersion Include="YesSql.Filters.Abstractions" Version="5.3.0" />
+    <PackageVersion Include="YesSql.Filters.Query" Version="5.3.0" />
+    <PackageVersion Include="Fluid.Core" Version="2.21.0" />
+    <PackageVersion Include="Elastic.Clients.Elasticsearch" Version="8.17.3" />
+    <PackageVersion Include="OpenIddict" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Testing Packages -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Moq" Version="4.20.72" />
+    <PackageVersion Include="xunit.v3" Version="1.1.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+  </ItemGroup>
+</Project>
