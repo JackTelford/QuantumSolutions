@@ -2,39 +2,35 @@ name: Deploy Orchard Core to Azure
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'  # Always use .x for latest patch
 
       - name: Debug file structure
         run: |
           echo "Current directory: $(pwd)"
           ls -R
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0'
+      - name: Restore dependencies with NuGet.Config
+        run: dotnet restore QuantumSolutions.sln --configfile NuGet.Config --force-evaluate --disable-parallel
 
-      - name: Show NuGet sources (debug)
-        run: dotnet nuget list source
-
-      - name: Restore dependencies with custom NuGet.Config
-        run: dotnet restore QuantumSolutions.sln --configfile NuGet.Config
-
-      - name: Build application
+      - name: Build the solution
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
-      - name: Publish application
+      - name: Publish the Web project
         run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj --configuration Release --output ./published
 
       - name: Upload artifact
@@ -46,8 +42,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Download artifact
+      - name: Download published artifact
         uses: actions/download-artifact@v4
         with:
           name: published-app
