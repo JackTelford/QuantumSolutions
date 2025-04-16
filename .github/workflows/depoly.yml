@@ -24,9 +24,10 @@ jobs:
       - name: Show NuGet sources (debug)
         run: dotnet nuget list source
 
-      - name: Restore dependencies with custom NuGet.config
-        run: dotnet restore QuantumSolutions.sln --configfile NuGet.config
-
+      - name: Restore dependencies with custom NuGet.Config
+        working-directory: QuantumSolutions
+        run: dotnet restore ../QuantumSolutions.sln --configfile NuGet.Config
+       
       - name: Build application
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
