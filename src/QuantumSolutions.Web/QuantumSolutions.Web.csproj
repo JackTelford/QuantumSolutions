@@ -17,13 +17,15 @@
 
     <!-- Restore fixes -->
     <RestoreIncludePrerelease>true</RestoreIncludePrerelease>
-    <RestoreAdditionalProjectSources>https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json</RestoreAdditionalProjectSources>
+    <!-- Combine multiple sources so that preview packages and stable packages are both considered -->
+    <RestoreAdditionalProjectSources>
+      https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json;https://api.nuget.org/v3/index.json
+    </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <PropertyGroup>
     <NoWarn>$(NoWarn);NU1604</NoWarn>
   </PropertyGroup>
-
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
