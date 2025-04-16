@@ -26,22 +26,19 @@
 
   <!-- PackageReferences with no version attributes, versions are pulled from Directory.Packages.props -->
   <ItemGroup>
-    <PackageReference Include="CrestApps.Components.Abstractions" />
-    <PackageReference Include="CrestApps.Components.Core" />
+    <PackageReference Include="CrestApps.Components.Abstractions" Version="1.10.0-preview-0023" />
+    <PackageReference Include="CrestApps.Components.Core" Version="1.10.0-preview-0023" />
     <PackageReference Include="CrestApps.Foundation" />
-    <PackageReference Include="OrchardCore.Logging.NLog" />
-    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" />
-    <PackageReference Include="OrchardCore.Shells.Azure" />
-    <PackageReference Include="TheTheme" />
-    <PackageReference Include="Ben.BlockingDetector" />
-    <PackageReference Include="CrestApps.Components" />
-    <PackageReference Include="CrestApps.Components.Users" />
-    <PackageReference Include="CrestApps.Queues" />
-    <PackageReference Include="CrestApps.Queues.Abstractions" />
-    <PackageReference Include="CrestApps.Queues.Core" />
-    <PackageReference Include="CrestApps.Support" />
-    <PackageReference Include="CrestApps.UniqueTitle" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="3.0.0-preview-18578" />
+    <PackageReference Include="OrchardCore.Application.Cms.Core.Targets" Version="3.0.0-preview-18578" />
+    <PackageReference Include="OrchardCore.Shells.Azure" Version="3.0.0-preview-18578" />
+    <PackageReference Include="TheTheme" Version="3.0.0-preview-18578" />
+    <PackageReference Include="Ben.BlockingDetector" Version="0.0.4" />
+    <PackageReference Include="CrestApps.Components" Version="1.10.0-preview-0023" />
+    <PackageReference Include="CrestApps.Components.Users" Version="1.10.0-preview-0024" />
+    <PackageReference Include="CrestApps.Queues" Version="1.10.0-preview-0027" />
+    <PackageReference Include="CrestApps.Queues.Abstractions" Version="1.10.0-preview-0023" />
+    <PackageReference Include="CrestApps.Queues.Core" Version="1.10.0-preview-0024" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0-preview.3.25171.5" />
   </ItemGroup>
 </Project>
