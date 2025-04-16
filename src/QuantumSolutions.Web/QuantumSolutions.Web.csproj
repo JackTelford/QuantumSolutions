@@ -12,7 +12,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- Retained version values -->
     <AspNetCorePackagesVersion>9.0.4</AspNetCorePackagesVersion>
-    <OrchardCoreVersion>3.0.0-preview-18572</OrchardCoreVersion>
+    <OrchardCoreVersion>3.0.0-preview-18578</OrchardCoreVersion>
     <CrestAppsVersion>1.2.0-preview-275</CrestAppsVersion>
   </PropertyGroup>
 
