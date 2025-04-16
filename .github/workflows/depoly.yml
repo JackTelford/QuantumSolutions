@@ -19,21 +19,6 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: 🧹 Clean old NuGet sources
-        run: |
-          dotnet nuget remove source OrchardCorePreview || true
-          dotnet nuget remove source CrestAppsPreview || true
-          dotnet nuget remove source nuget.org || true
-
-      - name: ➕ Add OrchardCore Preview Feed
-        run: dotnet nuget add source https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json --name OrchardCorePreview --store-password-in-clear-text --configfile NuGet.Config
-
-      - name: ➕ Add CrestApps Preview Feed
-        run: dotnet nuget add source https://nuget.cloudsmith.io/crestapps/crestapps-orchardcore/v3/index.json --name CrestAppsPreview --store-password-in-clear-text --configfile NuGet.Config
-
-      - name: ➕ Add nuget.org (fallback)
-        run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org --store-password-in-clear-text --configfile NuGet.Config
-
       - name: 🛠 Restore dependencies (verbose mode)
         run: |
           dotnet restore QuantumSolutions.sln \
@@ -46,7 +31,10 @@ jobs:
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
       - name: 🚀 Publish the application
-        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj --configuration Release --no-restore --output ./published
+        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj \
+              --configuration Release \
+              --no-restore \
+              --output ./published
 
       - name: 📤 Upload publish artifact
         uses: actions/upload-artifact@v4
