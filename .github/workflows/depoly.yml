@@ -11,10 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Debug file structure
+        run: |
+          echo "Current directory: $(pwd)"
+          ls -R
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -27,7 +31,7 @@ jobs:
       - name: Restore dependencies with custom NuGet.Config
         working-directory: QuantumSolutions
         run: dotnet restore ../QuantumSolutions.sln --configfile NuGet.Config
-       
+
       - name: Build application
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
@@ -43,7 +47,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
