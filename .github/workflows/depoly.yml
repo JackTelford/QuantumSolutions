@@ -11,29 +11,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 📁 Step 1: Checkout code
       - name: Checkout source code
         uses: actions/checkout@v4
 
+      # 🧰 Step 2: Setup .NET 9 SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
 
-      - name: Add Orchard Core Preview feed manually
-        run: dotnet nuget add source https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json --name OrchardCorePreview
+      # 🔁 Step 3: Ensure clean NuGet config and add preview feeds
+      - name: Remove default NuGet sources (to avoid conflicts)
+        run: dotnet nuget remove source nuget.org || true
 
-      - name: Add CrestApps Preview feed manually
-        run: dotnet nuget add source https://nuget.cloudsmith.io/crestapps/crestapps-orchardcore/v3/index.json --name CrestAppsPreview
+      - name: Add Orchard Core Preview feed (safe update)
+        run: |
+          dotnet nuget update source OrchardCorePreview \
+            --source https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json \
+            || dotnet nuget add source https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json --name OrchardCorePreview
 
+      - name: Add CrestApps Preview feed (safe update)
+        run: |
+          dotnet nuget update source CrestAppsPreview \
+            --source https://nuget.cloudsmith.io/crestapps/crestapps-orchardcore/v3/index.json \
+            || dotnet nuget add source https://nuget.cloudsmith.io/crestapps/crestapps-orchardcore/v3/index.json --name CrestAppsPreview
+
+      - name: Re-add NuGet.org (last fallback)
+        run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org || true
+
+      # 📦 Step 4: Restore with strong flags for central management & preview support
       - name: Restore dependencies
-        run: dotnet restore QuantumSolutions.sln --disable-parallel --force-evaluate
+        run: dotnet restore QuantumSolutions.sln --disable-parallel --force-evaluate --verbosity detailed
 
+      # 🛠 Step 5: Build solution
       - name: Build solution
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
+      # 🚀 Step 6: Publish web app
       - name: Publish application
-        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj --configuration Release --output ./published
+        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj --configuration Release --no-restore --output ./published
 
+      # 📤 Step 7: Upload published artifact for deploy job
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -45,20 +64,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 📥 Step 1: Download published output
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: published-app
           path: ./published
 
+      # 🔐 Step 2: Azure CLI login via GitHub secret
       - name: Azure CLI Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      # 🚀 Step 3: Deploy to Azure Web App
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: quantumsolutionsapp
+          app-name: quantumsolutionsapp  # 🛠 Replace with your Azure App name
           slot-name: Production
           package: ./published
