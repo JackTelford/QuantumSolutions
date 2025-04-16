@@ -11,30 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: 📦 Checkout source code
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
+      - name: ⚙️ Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
 
-      - name: Add Orchard Core Preview feed manually
-        run: dotnet nuget add source https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json --name OrchardCorePreview
+      - name: 🛠 Restore dependencies (verbose mode)
+        run: |
+          dotnet restore QuantumSolutions.sln \
+            --disable-parallel \
+            --force-evaluate \
+            --configfile NuGet.Config \
+            --verbosity detailed
 
-      - name: Add CrestApps Preview feed manually
-        run: dotnet nuget add source https://nuget.cloudsmith.io/crestapps/crestapps-orchardcore/v3/index.json --name CrestAppsPreview
-
-      - name: Restore dependencies
-        run: dotnet restore QuantumSolutions.sln --disable-parallel --force-evaluate
-
-      - name: Build solution
+      - name: 🧪 Build the solution
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
-      - name: Publish application
-        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj --configuration Release --output ./published
+      - name: 🚀 Publish the application
+        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj \
+              --configuration Release \
+              --no-restore \
+              --output ./published
 
-      - name: Upload artifact
+      - name: 📤 Upload publish artifact
         uses: actions/upload-artifact@v4
         with:
           name: published-app
@@ -45,20 +47,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifact
+      - name: 📥 Download published app
         uses: actions/download-artifact@v4
         with:
           name: published-app
           path: ./published
 
-      - name: Azure CLI Login
+      - name: 🔐 Azure CLI Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Web App
+      - name: 🌐 Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: quantumsolutionsapp
+          app-name: quantumsolutionsapp  # 🔁 Replace if your app name differs
           slot-name: Production
           package: ./published
