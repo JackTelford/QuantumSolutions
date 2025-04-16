@@ -117,7 +117,8 @@
     <PackageVersion Include="OrchardCore.Layers" Version="$(OrchardCoreVersion)" />
     <PackageVersion Include="OrchardCore.Liquid" Version="$(OrchardCoreVersion)" />
     <PackageVersion Include="OrchardCore.Lists" Version="$(OrchardCoreVersion)" />
-    <PackageVersion Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+    <!-- <PackageVersion Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" /> -->
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="3.0.0-preview-18578" />
     <PackageVersion Include="OrchardCore.Markdown" Version="$(OrchardCoreVersion)" />
     <PackageVersion Include="OrchardCore.Markdown.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageVersion Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
