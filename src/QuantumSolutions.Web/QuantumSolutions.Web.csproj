@@ -12,12 +12,18 @@
 
     <!-- Central Package Management -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <EnableCentralPackageVersions>true</EnableCentralPackageVersions>
     <RestoreUseStaticGraphEvaluation>false</RestoreUseStaticGraphEvaluation>
 
     <!-- Restore fixes -->
     <RestoreIncludePrerelease>true</RestoreIncludePrerelease>
     <RestoreAdditionalProjectSources>https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json</RestoreAdditionalProjectSources>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1604</NoWarn>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
