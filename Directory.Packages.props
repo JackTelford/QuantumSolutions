@@ -41,7 +41,7 @@
   <ItemGroup>
     <!-- CrestApps Old Packages -->
     <PackageVersion Include="CrestApps.Foundation" Version="1.0.0" />
-    <PackageVersion Include="CrestApps.Support" Version="1.2.2" />
+    <PackageVersion Include="CrestApps.Support" Version="$(CrestAppsVersion)" />
     <PackageVersion Include="CrestApps.Components" Version="1.10.0-preview-0023" />
     <PackageVersion Include="CrestApps.Components.Abstractions" Version="1.10.0-preview-0023" />
     <PackageVersion Include="CrestApps.Components.Core" Version="1.10.0-preview-0023" />
