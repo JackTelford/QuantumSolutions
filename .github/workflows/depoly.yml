@@ -31,10 +31,7 @@ jobs:
         run: dotnet build QuantumSolutions.sln --configuration Release --no-restore
 
       - name: 🚀 Publish the application
-        run: dotnet publish src/QuantumSolutions.Web/QuantumSolutions.Web.csproj \
-              --configuration Release \
-              --no-restore \
-              --output ./published
+        run: dotnet publish --configuration Release --no-restore --output ./published src/QuantumSolutions.Web/QuantumSolutions.Web.csproj
 
       - name: 📤 Upload publish artifact
         uses: actions/upload-artifact@v4
